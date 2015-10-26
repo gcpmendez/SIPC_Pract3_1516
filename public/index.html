@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">  <!-- CSS -->
+  <script type="text/javascript" src="js/validador.js"></script>   <!-- JS -->
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script> <!-- FIREBASE -->
+  <script src= "js/Mycontroler.js"></script>
+  <!--<script type="text/javascript" src="js/Mycontroler.js"></script>   -->
+</head>
+<body ng-app="app">
+  <div class="container" >
+    <!--ng-init="name='Paco'"-->
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#contenido">Contenido</a></li>
+      <li><a data-toggle="tab" href="#formulario">Formulario</a></li>
+      <li><a data-toggle="tab" href="#menu2">Contenido externo</a></li>
+      <li><a data-toggle="tab" href="#chat">Chat</a></li>
+      <li><a data-toggle="tab" href="#datosjson">Datos de data.json</a></li>
+    </ul>
+
+    <div  class="tab-content">
+      <!-- ========================= CONTENIDO =================================-->
+      <div id="contenido" class="tab-pane fade in active">
+        <center>
+          <h3> Este proyecto nace de la idea de imitar a <a href="http://explainshell.com/">explainshell</a>
+            pero en un formato más corto para accesos directos de Eclipse.</h3>
+            <br>
+            <h3>Tratara de llevar al usuario de un nivel novato a un nivel
+              experto para que este adquiera rapidez en el entorno de Eclipse.</h3>
+              <img src="images/eclipse.jpg" alt="..." class="img-rounded">
+            </center>
+          </div>
+          <!-- ========================= CONTENIDO =================================-->
+
+          <div  id="formulario" class="tab-pane fade" >
+            <h1>Únete y mejora tu nivel!</h1>
+            <form   class="form-horizontal " method="GET"  onsubmit="return validador()" id="signup-form">
+              <!-- NAME -->
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input id="full-name" ng-model="name" type="text" autocomplete="off" value="" name="nombre" maxlength="20" aria-required="true" placeholder="Nombre completo"  class="form-control">
+
+                </div>
+              </div>
+              <!-- RADIO BUTTON-->
+              <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-10">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" ng-model="edad" name="opciones" id="opciones_1" value="opcion_1">
+                      Soy mayor de 18 años
+                    </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>
+                      <input type="radio" ng-model="edad" name="opciones" id="opciones_2" value="opcion_2">
+                      Soy menor de 18 años
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- CORREO ELECTRONICO -->
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input id="email" ng-model="mail" class="form-control" type="text" autocomplete="off" name="email" aria-required="true" placeholder="Correo electrónico" >
+                </div>
+              </div>
+              <!-- PASSWORD -->
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input id="password" ng-model="password" class="form-control" type="password" value="" name="password" aria-required="true" placeholder="Contraseña" >
+                </div>
+              </div>
+              <!-- PASSWORD -->
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input id="password2" ng-model="password2" class="form-control" type="password" value="" name="password2" aria-required="true" placeholder="Repite contraseña" >
+                </div>
+              </div>
+              <!-- CONDICIONES -->
+              <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-10">
+                  <div class="checkbox">
+                    <label>
+                      <input id="conditions" ng-model="condiciones" type="checkbox"> Acepto las condiciones
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- BOTON -->
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <button  id="Boton" type="submit"  class="btn btn-success btn-lg btn-block">Registrate</button>
+                  <script>
+                  var myDataForm = new Firebase('https://formulariosipc.firebaseio.com/');
+                  $('#Boton').click(function(){
+                    var name = $('#full-name').val();
+                    var email = $('#email').val();
+                    var mayor = $('#opciones_1').val();
+                    var pass = $('#password').val();
+                    myDataForm.push({name: name, email: email, mayorEdad: mayor, password: pass});
+                  });
+                  </script>
+
+                </script>
+                <div class="befound">
+                  <p>Al registrarte, aceptas las <a href="/tos" class="legal-link" target="_blank">Condiciones de Servicio</a> y la <a href="/privacy" class="legal-link" target="_blank">Política de Privacidad</a>, incluyendo el <a href="https://support.twitter.com/articles/20170514" class="legal-link" target="_blank">Uso de Cookies</a>.</p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div  id="menu2" class="tab-pane fade">
+
+          <br><br>
+          <p>Nombre: <span ng-bind=name></span></p>
+          <p>edad: {{edad}}</p>
+          <p>mail: {{mail}}</p>
+          <p>password: {{password}}</p>
+          <p>password2: {{password2}}</p>
+          <p>condiciones: {{condiciones}}</p>
+        </div>
+        <div id="chat" class="tab-pane fade">
+          <center>  <div id='messagesDiv'></div>
+            <input type='text' id='nameInput' placeholder='Name'>
+            <input type='text' id='messageInput' placeholder='Message'>
+            <script>
+            var myDataChat = new Firebase('https://chatom.firebaseio.com/');
+            $('#messageInput').keypress(function (e) {
+              console.log(e.keyCode);
+              if (e.keyCode == 13) {
+                var name = $('#nameInput').val();
+                var text = $('#messageInput').val();
+                myDataChat.push({name: name, text: text});
+                $('#messageInput').val('');
+              }
+            });
+            myDataChat.on('child_added', function(snapshot) {
+              var message = snapshot.val();
+              displayChatMessage(message.name, message.text);
+            });
+            function displayChatMessage(name, text) {
+              $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+              $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+            };
+            </script>
+          </center>
+        </div>
+        <div id="datosjson" class="tab-pane fade">
+
+            <div  ng-controller="Mycontroler">
+            <h1> Calendario Académico ULL </h1>
+            <ul>
+              <li ng-repeat="x in datos">
+                  {{ x.fecha_inicio + ' - [' + x.nombre + '], ' + x.lugar }}
+                </li>
+            </ul>
+
+            </div>
+
+
+        </div>
+
+      </div>
+
+    </body>
+    </html>

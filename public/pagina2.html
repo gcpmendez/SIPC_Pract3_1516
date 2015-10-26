@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+    /**
+     * Funcion que captura las variables pasados por GET
+     * Devuelve un array de clave=>valor
+     */
+    function conseguirGET()
+    {
+        // capturamos la url
+        var loc = document.location.href;
+        document.write("<br> <p><b>URL:</b> "+document.location.href+"</p><br><br><br>");
+        // si existe el interrogante
+        if(loc.indexOf("?")>0)
+        {
+            // cogemos la parte de la url que hay despues del interrogante
+            var getString = loc.split("?")[1];
+            // obtenemos un array con cada clave=valor
+            var GET = getString.split("&");
+            var get = {};
+
+            // recorremos todo el array de valores
+            for(var i = 0, l = GET.length; i < l; i++){
+                var tmp = GET[i].split("=");
+                get[tmp[0]] = unescape(decodeURI(tmp[1]));
+            }
+            return get;
+        }
+    }
+    </script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var valores=conseguirGET();
+    if(valores)
+    {
+        // hacemos un bucle para pasar por cada indice del array de valores
+        for(var index in valores)
+        {
+            document.write("<br> <b>clave:</b> "+index+" <b>- valor: </b>"+valores[index]);
+        }
+    }else{
+        // no se ha recibido ningun parametro por GET
+        document.write("<br>No se ha recibido ningún parámetro");
+    }
+  </script>
+</body>
+</html>

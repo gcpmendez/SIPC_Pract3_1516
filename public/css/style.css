@@ -1,0 +1,98 @@
+body {
+    /*padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.header-image {
+    display: block;
+    width: 100%;
+    text-align: center;
+    /*background: url('http://placehold.it/1900x500') no-repeat center center scroll;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+#menu {
+  background-color: #01A9DB;
+}
+
+#cabecera {
+  background-color: #74DF00;
+}
+
+.navbar-header h4 {
+  font-size: 30px;
+  background: #fff;
+  background: rgba(255,255,255,0.9);
+}
+
+.headline {
+    padding: 120px 0;
+}
+
+.headline h1 {
+    font-size: 130px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+.headline h2 {
+    font-size: 77px ;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+.container .row #columna1 {
+  padding: 20px 20px 603px;
+  background-color: #FA8258;
+}
+
+.container .row #contenidoprincipal {
+  padding: 20px 20px  280px;
+  background-color: #81F7F3;
+}
+
+.container .row #contenidosecundario {
+  width: 100%;
+  background-color: #BDBDBD;
+}
+
+.container .row #contenidosecundario #uno {
+      padding:0px 0px 280px;
+  background-color: #FE642E;
+}
+
+.container .row #contenidosecundario #dos {
+      padding: 0px 0px 280px;
+  background-color: #40FF00;
+}
+
+.container .row #columna2 {
+  padding: 20px 20px 603px;
+  background-color: #DF01A5;
+}
+
+#columna1 h4 {
+  font-size: 30px;
+  background: #fff;
+  background: rgba(255,255,255,0.9);
+}
+
+#contenidoprincipal h4 {
+  font-size: 30px;
+  background: #fff;
+  background: rgba(255,255,255,0.9);
+}
+
+
+
+#columna2 h4 {
+  font-size: 30px;
+  background: #fff;
+  background: rgba(255,255,255,0.9);
+}
